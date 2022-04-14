@@ -7,30 +7,64 @@
     <title>Practical Uses</title>
 </head>
 <body>
-    <a href="https://moderncss.dev/">Episode List</a> <a href="https://moderncss.dev/"> M</a> <a href="https://moderncss.dev/topics/"> Topics List</a>
+    <a href="https://moderncss.dev/">Episode List</a>
+    <a href="https://moderncss.dev/">M</a>
+    <a href="https://moderncss.dev/topics/">Topics List</a>
     <h1>Practical Uses of CSS Math Functions: calc, clamp, min, max</h1>
     <p>
-        <em>Posted on</em>: Aug 15, 2021 <span class="byline" data-byline="">Written by Stephanie Eckles</span>
-        <a class="button button-icon" href="htpps://twitter.com/5t3ph/" 
-        aria-label="Twitter">
-        <svg aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor" class="button__icon"><use href="#icon-twitter"></use></svg></a>
-        <use href="#icon-twitter"></use>
+        <em>Posted on</em>: Aug 15, 2021 
+        <small>
+            Written by Stephanie Eckles
+            <a href="htpps://twitter.com/5t3ph/" aria-label="Twitter">_</a>
+        </small>
     </p>
     <img src="https://d33wubrfki0l68.cloudfront.net/4ddbbe434dc362c6c06f912339d496bc33a25df3/0ad60/img/avatars/steph.jpg" alt="" width="100">
-    <p>This is <strong>episode #28</strong> in a series examining modern CSS solutions to problems Stephanie Eckles has been solving over the last 14+ years as a front-end dev.</p>
+    <p>
+        This is <strong>episode #28</strong> in a series examining modern CSS solutions
+        to problems Stephanie Eckles has been solving over the last 14+ years as a front-end dev.
+    </p>
     <details id="toc" open="">
         <summary>
-         Table of Contents
+            Table of Contents
         </summary>
-    <nav class="toc">
         <ol>
             <li><a href="#calc">calc()</a></li>
-            <li><a href="#clamp">camlp()</a></li>
-            <li><a href="#mic">mic()</a></li>
+            <li><a href="#clamp">clamp()</a></li>
+            <li><a href="#min">min()</a></li>
             <li><a href="#max">max()</a></li>
             <li><a href="#putting-it-all-together">Putting It All Together</a></li>
         </ol>
-    </nav>
+    <p>
+        There are currently <a href="https://caniuse.com/css-math-functions">four
+        well-supported math functions in CSS.</a> I've found each of them to be
+        extremely useful in my daily work. These CSS functions can be used in 
+        perhaps unexpected ways, such as within gradients and color functions
+        and in combination with CSS custom properties. We'll learn the syntax
+        for each, view basic demos of their functionality, and explore practical use cases.
+    </p>
     </details>
+    <h2 id="calc">
+       <code>calc()</code>
+    </h2>
+    <blockquote>
+        <p>
+            <strong>Practical purpose of <code>calc()</code></strong>: performing 
+            basic math operations, with the ability to interpolate between unit 
+            types (ex. <code>rem</code> to <code>vw</code>).
+        </p>
+    </blockquote>
+    <p>
+        This math function has the longest cross-browser support of the four functions
+        we're exploring. It has a wide range of uses for any time you'd like to be
+        able to do client-side math within your styles.
+    </p>
+    <p>
+        For example, you may want something to take up most of the viewport height except
+        the height of the navigation. For this purpose, you can mix units to pass a relative
+        <code>vh</code> (view height) unit with an absolute pixel unit:
+    </p>
+    <pre><code>.content {
+    height: calc(100vh - 60px);
+}</code></pre>
 </body>
 </html>
