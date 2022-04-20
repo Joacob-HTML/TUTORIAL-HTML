@@ -66,5 +66,267 @@
     <pre><code>.content {
     height: calc(100vh - 60px);
 }</code></pre>
+    <p>
+        As the viewport resizes or a user visits on larger or
+        smaller devices, the value of <code>100vh</code> will dynamically
+        update, and therefore so will the calculation.
+    </p>
+    <blockquote>
+        <p>
+            The benefit of <code>calc()</code> is in allowing you to avoid
+            either hard-coding a range of magic numbers or
+            adding a JavaScript solution to calculate the
+            value needed to apply it as an inline style.
+        </p>
+    </blockquote>
+    <h3>Using <code>calc()</code> For Generative Color Palettes</h3>
+    <p>
+        We can extend the capabilities of calc() 
+        by passing in CSS custom properties.
+    </p>
+    <p>
+        An example of this being very useful is creating
+        a consistent color palette using <code>hsl()</code> 
+        (which stands for hue, saturation, and lightness).
+        Given values for saturation, lightness,
+        and a starting hue, we can calculate complementary
+        values to build a full palette. 
+        Because of the commonality among the saturation
+        and lightness values, the palette will feel
+        cohesive.
+    </p>
+    <details id="toc" open="">
+        <summary>
+            CSS for "Using calc() to create an HSL color palette"  
+        </summary>
+            <pre class="language-css">
+.colors {
+  --base-hue: 140;
+  --saturation: 95%;
+  --lightness: 80%;
+  --rotation: 60;  
+  
+  color: #222;
+  text-align: center;
+}
+
+.color {
+    padding: 0.25rem;
+    background-color: hsl(var(--hue), var(--saturation), var(--lightness));
+}
+  
+.color1 {
+    --hue: calc(var(--base-hue));
+}
+  
+.color2 {
+    --hue: calc(var(--base-hue) + var(--rotation));
+}
+  
+.color3 {
+    --hue: calc(var(--base-hue) + var(--rotation) * 2);
+}
+            </pre>
+    </details>
+    <ul>
+        <li>Color 1</li>
+        <li>Color 2</li>
+        <li>Color 3</li>
+    </ul>
+<h2><code>clamp()</code></h2>
+    <blockquote>
+        <p>
+            <strong>Practical purpose of</strong>
+            <code>clamp()</code>: setting boundaries
+            on a range of acceptable values. 
+        </p>
+    </blockquote>
+    <p>
+        The <code>clamp()</code> function takes three values,
+        and order matters. The first is the lowest
+        value in your range, the middle is your
+        ideal value, and the third is the highest
+        value in your range. 
+    </p>
+    <p>
+        An area you may have already encountered the use
+        of <code>clamp()</code> is for fluid typography. 
+        The essential concept is that the <code>font-size</code> 
+        value can fluidly adjust based on the viewport size.
+        This is intended to prevent large headlines triggering
+        overflow, or taking up too much of the viewport.  
+    </p>
+    <p>
+        A very basic definition for a fluid <code>h1</code> style:
+    </p>
+    <pre>
+h1 {
+  font-size: clamp(1.75rem, 4vw + 1rem, 3rem);
+}</pre>
+    <p>
+        You can <a href=
+        "https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/">
+        read more about generating fluid type in the Modern
+        CSS episode 12.</a> 
+    </p>
+    <h3>Relative Responsive Padding With <code>clamp()</code></h3>
+    <p>
+        Another example can be seen in <a href="https://smolcss.dev/#smol-responsive-padding">
+        my demo from SmolCSS on responsive padding</a>. 
+        The interesting thing about
+        using percentages for padding is that it is relative
+        to the element's width. This means it's a bit like
+        a container-relative unit, which we can use similar
+        to how you might think of <code>vw</code>.
+    </p>
+    <p>
+        The example from SmolCSS uses the following padding
+        definition, where the padding will grow and shrink
+        relative to the element's width. It will never be
+        less than 1rem, and never greater than <code>3rem</code>:
+    </p>
+<pre>
+.element {
+  padding: 1.5rem clamp(1rem, 5%, 3rem);
+}
+</pre>
+    <p>
+        You may have realized this again removes some
+        scenarios where you might have previously reached
+        for media queries. Instead of micro-managing this
+        spacing or worrying about strictly adhering to a
+        pixel ramp (ex 8, 12, 24, 36), you can set up
+        sensible guidelines for a responsive transition.  
+    </p>
+    <p>
+        The most significant benefit here versus media
+        queries is that since this padding definition
+        is element relative, it will be larger when
+        the element has more space on the page and
+        smaller if, for example, it's placed in a narrow
+        column. This would take a lot of coordination
+        with media-query-based utility classes!
+    </p>
+    <h2><code>min()</code></h2>
+        <blockquote>
+            <strong>Practical purpose of 
+            <code>min()</code></strong>: setting boundaries on the
+            maximum allowed value in a way that encompasses
+            the responsive context of an element.
+        </blockquote>
+    <p>
+        That's right - despite being the <code>min()</code> function,
+        the outcome is that the provided values will
+        act as a maximum allowed value for the property. 
+    </p>
+    <p>
+        Given <code>width: min(80ch, 100vw)</code>, the outcome is that
+        on a larger viewport, the <code>80ch</code> will be selected
+        because it is the smaller value of the two options,
+        yet it <em>acts like</em> a maximum based on contextually
+        available space. Once the viewport shrinks, 
+        <code>100vw</code> will be used because it is computed as <em>smaller
+        than</em> <code>80ch</code>, yet it's actually providing a maximum
+        boundary for the element's width.
+    </p>
+    <h3>The Modern CSS <code>.container</code> Class</h3>
+    <p>
+        The example just provided is my preferred way
+        to define a <code>.container</code>, with one tiny tweak.
+        The <code>min()</code> function allows nested basic math
+        operations, which means we can flip to subtracting
+        some space as a swap for defining left and
+        right padding, as follows:
+    </p>
+    <pre>
+.container {
+  width: min(80ch, 100vw - 2rem);
+}
+    </pre>
+    <p>
+        On larger viewports, the element can grow to
+        a <em>max</em> of <em>80ch</em>, and once the viewport shrinks
+        below that width, it will be allowed to grow
+        to <code>100vw - 2rem</code>. This definition effectively
+        produces <code>1rem</code> of "padding" on either
+        side of the element. 
+    </p>
+    <p>
+        In this example, you could also swap to <code>100%</code>
+        instead of vw to make the element width 
+        responsive within a <em>parent container</em>, 
+        as used for this demo:
+    </p>
+    <details id="toc" open="">
+        <summary>
+            CSS for "The Modern CSS .container Class"
+        </summary>
+            <pre>
+.container {
+  width: min(40ch, 100% - 2rem);
+  margin-right: auto;
+  margin-left: auto;
+}           </pre>
+    </details>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing
+        elit. Vero a quam labore inventore iste eligendi,
+        quasi velit, qui repellendus voluptatem temporibus
+        nisi. Pariatur nesciunt at dolorum, cumque illum
+        maiores animi?
+    </p>
+    <blockquote>
+        <p>
+            <em>Quick note</em>: The <code>ch</code> unit is equal to the width
+            of the <code>0</code> character given all current <code>font</code>
+            properties at the time it is applied.
+            This makes it an excellent choice for approximating
+            line length for a better reading experience, for example.
+        </p>
+    </blockquote>
+    <p>
+        <strong>What's the benefit</strong>? 
+        Responsive sizing without
+        the need for media queries! It seems to be
+        a common theme for these functions 😉
+    </p>
+    <p>
+        The <code>min()</code> function is my most used of the math functions.
+        Let's look at some more amazing upgrades
+        to practical scenarios.
+    </p>
+    <h3>Responsive Element Sizing with <code>min()</code></h3>
+    <p>
+        <strong>Any time you would like to size an element responsively,</strong>
+        <strong><code>min()</code> can be a great choice</strong>.
+        For example, I explored <a href="">using
+        <code>min()</code> to control sizing an avatar</a>  within a comment thread
+        in Modern CSS episode 26.
+    </p>
+    <p>
+        In the avatar example, we ended up applying
+        <em>three</em> values with different units: 
+        <code>min(64px, 15%, 10vw)</code>.
+        Another way to read this is that the avatar
+        size will not exceed one of those values at
+        any given time, with the browser selecting
+        whichever is the <em>minimum</em> computed value.
+    </p>
+    <p>
+        This definition works out to never having an
+        avatar larger than <code>64px</code>. Particularly in a
+        zoom scenario, the <code>10vw</code> helps the size feel
+        more relative. 
+        And the <code>15%</code> helps keep the size relative to the
+        element, which may have a more visually appealing
+        result before the <code>10vw</code> applies.
+    </p>
+    <p>
+        <strong>Join my newsletter</strong> 
+        for article updates, 
+        CSS tips, and front-end resources!
+    </p>
+    
+
 </body>
 </html>
