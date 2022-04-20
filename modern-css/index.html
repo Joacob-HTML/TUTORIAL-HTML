@@ -326,7 +326,246 @@ h1 {
         for article updates, 
         CSS tips, and front-end resources!
     </p>
-    
+    <form class="form"
+            action="/success" method="post"
+            name="newsletter">
+        <input type="hidden" name="form-name"
+            value="newsletter">
+            <p hidden="">
+                <label>
+                    Don't fill this out if you're human:
+                    <input name="bot_field">
+                </label>
+            </p>
+    <div class="form-inline">
+        <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-field" 
+                required="" type="text" name="email">
+        </div>
+            <button class="button" type="submit">
+                Sign Up
+            </button>
+        </div>
+    </form>
+<h3>Using <code>min()</code> Within Other Properties</h3>
+    <p>
+        CSS math functions can be used in most properties
+        that allow a numeric value. One unique place to
+        use them is within <code>background-size</code>.
+    </p>
+    <p>
+        Why? Perhaps you're supplying a layered effect of
+        a background color and an image. And rather than
+        using the <code>cover</code> size value, which would make the
+        image fill the space, you would like to cap the
+        growth of the image. This is a perfect place to
+        bring in <code>min()</code>.  
+    </p>
+    <p>
+        Consider the following example, where <code>min()</code> is used
+        to ensure the image doesn't exceed <code>600px</code> while being
+        allowed to respond down with the element by also
+        setting <code>100%</code>. In other words, it will
+        grow <em>up to</em> <code>600px</code>
+        and then resize itself down to match the element's
+        width when it is less than <code>600px</code>.
+    </p>
+    <details id="toc" open="">
+        <summary>CSS for "Controlling background-size with min()"</summary>
+            <pre>
+.background-image {
+  background: #1F1B1C url(https://source.unsplash.com/RapCPd_mJTU/800x800) no-repeat center;
+  background-size: min(600px, 100%);
+}           </pre>
+    </details>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Vero a quam labore inventore iste eligendi, quasi velit. 
+    </p>
+    <h2><code>max()</code></h2>
+        <blockquote>
+            <p>
+                <strong>Practical purpose of <code>max()</code></strong>: setting boundaries
+                on the minimum allowed value in a way that
+                encompasses the responsive context of an element. 
+            </p>
+        </blockquote>
+    <p>
+        Yup, <code>max()</code> is the opposite of <code>max()</code>! So now we are
+        setting up definitions for the <em>minimum</em> allowed values. 
+        Let's get right to the examples!
+    </p>
+    <h3>Contextual Margins with <code>max()</code></h3>
+    <p>
+        After learning about the <a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">
+        Web Content Accessibility Guidelines (WCAG) Success Criterion 1.4.10</a> 
+        for reflow, which states that a user should be able to use zoom 
+        to magnify your site to 400%, I noticed that pixels 
+        and rems become a subpar unit in that context.
+    </p>
+    <p>
+        Given a desktop size of 1280px at 400% zoom, 
+        your content is equivalent to a device at 320px. 
+        However - versus a mobile phone - the orientation 
+        is still landscape. A viewport of this size means 
+        a much-reduced area to read and perform actions. 
+        Additionally, sizes that seemed appropriate for a 
+        phone become a lot large contextually when viewed 
+        in a zoomed-in window.
+    </p>
+    <p>
+        Fortunately, <code>max()</code> gives us one way 
+        to in particular handle margins more gracefully. 
+        I avoid pixel values for everything in my personal work 
+        and usually prefer rem for smaller spaces. 
+        But for larger spaces intended to separate content 
+        sections, I use the following, which allows relative
+        growth for tall viewports and reduces distance for 
+        shorter viewports, which also applies to zoomed viewports.
+    </p>
+    <pre>
+.element + .element {
+  margin-top: max(8vh, 2rem);
+}   
+    </pre>
+    <p> On the taller viewports, 8vh will be used, and on 
+        smaller or zoomed-in viewports, 2rem will be used. 
+        I encourage you to try this out and spend some 
+        time testing across viewports, devices, and with
+        and without zooming into your layout. 
+        This technique is a small upgrade that can make
+        a significant difference for the end-user.
+    </p>
+    <blockquote>
+        <p>
+            Review an expanded example of this scenario and 
+                <a href="https://moderncss.dev/modern-css-upgrades-to-improve-accessibility/#desktop-zoom-and-reflow">
+            learn more about reflow</a> 
+            in the Modern CSS episode 27.
+        </p>
+    </blockquote>
+    <h3>Prevent Browser Zoom on Inputs in iOS with <code>max()</code></h3>
+    <p>
+        Have you ever experienced forced browser zoom
+        once you focused a form input on iOS? 
+        This consequence will happen for any input 
+        that has a font-size less than <code>16px</code>.
+    </p>
+    <p>
+        Here's the fix, originally linked in <a href="https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/">Modern 
+        CSS episode 21 about custom form input styles</a>, 
+        with full credit to <a href="https://dev.to/danburzo/css-micro-tip-make-mobile-safari-not-have-to-zoom-into-inputs-1fc1">
+        Dan Burzo</a> for this simple solution:
+    </p>
+    <pre>
+input {
+  font-size: max(16px, 1rem);
+}
+    </pre>
+    <p>Where <code>1rem</code> could be swapped with a Sass variable 
+        or a CSS custom property. This use of <code>max()</code> 
+        ensures that regardless of another value provided, 
+        the <code>font-size</code> will be <em>at least</em> 
+        <code>16px</code> and therefore prevent the 
+        forced browser zoom.
+    </p>
+    <h3>Relative Focus Outlines with <code>max()</code></h3>
+    <p>
+        The latest addition to my CSS reset uses 
+        <code>min()</code> to apply relative sizing 
+        for focus outlines.
+    </p>
+    <p>
+        This is a reduced snippet, but by using <code>max()</code>, 
+        we ensure a <em>minimum</em> outline size of <code>2px</code>, while 
+        allowing it to <em>grow</em> relative to the element by 
+        using the font-relative <code>em</code> value.
+    </p>
+    <pre>
+a {
+  --outline-size: max(2px, 0.08em);
+  --outline-style: solid;
+  --outline-color: currentColor;
+}
 
+a:focus {
+  outline: var(--outline-size) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-size);
+}
+    </pre>
+    <h3>Accessible Target Sizes with <code>max()</code></h3>
+    <p>
+        The term "target size" comes from <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html">
+        WCAG Success Criterion (SC) 2.5.5</a>, where "target" 
+        refers to the area that will receive a pointer event 
+        (ex. mouse click or touch tap). In the upcoming 
+        WCAG 2.2, SC 2.5.5 is now the "Enhanced" version, 
+        which has a minimum size of <code>44px</code>. 
+    </p>
+    <p>
+        For this guideline, consider buttons that only use icons 
+        or the avatar from our earlier example that links to a 
+        profile. Or perhaps a dual-action button where a dropdown
+        arrow is a separate action from the primary button 
+        control.
+    </p>
+    <p>
+        In these instances, we can use <code>max()</code> similarly to 
+        when we provided a guardrail to prevent the input 
+        zooming. We'll set <code>44px</code> as one of the values within 
+        <code>max()</code> so that at <em>minimum</em>, that is the element's size.
+    </p>
+        <pre>
+.icon-button {
+  width: max(44px, 2em);
+  height: max(44px, 2em);
+}            
+        </pre>
+    <p>
+        It should be noted that this criterion also considers 
+        the space around the element, which if combined with 
+        the element's actual size is <em>at least</em> 
+        <code>44px</code>, then the criterion is passed 
+        successfully. As with all of these techniques, 
+        be sure to test with your actual product and 
+        with real users!
+    </p>
+    <h3>Using <code>max()</code> As A Fallback for CSS <code>aspect-ratio</code></h3>
+    <p>
+        Another way I've used <code>max()</code> is to set an image height 
+        when using <code>aspect-ratio</code> to enable an acceptable 
+        experience for browsers that do not yet support that 
+        property.
+    </p>
+    <p>
+        You can see the following sample fully in use for 
+        the <a href="https://smolcss.dev/#smol-card-component">
+        SmolCSS demo for a composable card component</a>.
+    </p>
+        <pre>
+img {
+  /* Fallback for `aspect-ratio` of defining a height */
+  height: max(18vh, 12rem);
+  object-fit: cover;
+  width: 100%;
+}
+              
+/* When supported, use `aspect-ratio` */
+@supports (aspect-ratio: 1) {
+  img {
+    aspect-ratio: var(--img-ratio);
+    height: auto;
+  }
+}  
+        </pre>
+    <h2>Putting It All Together</h2>
+    <p>
+        This final demo shows an example of applying multiple 
+        CSS math functions to allow responsive sizing across 
+        several properties. Note the comments alongside the 
+        demonstrated code.
+    </p>
+    
 </body>
 </html>
