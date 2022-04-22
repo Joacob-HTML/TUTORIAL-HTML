@@ -7,383 +7,383 @@
     <title>Practical Uses</title>
 </head>
 <body>
-    <a href="https://moderncss.dev/">Episode List</a>
-    <a href="https://moderncss.dev/">M</a>
-    <a href="https://moderncss.dev/topics/">Topics List</a>
-    <h1>Practical Uses of CSS Math Functions: calc, clamp, min, max</h1>
-    <p>
-        <em>Posted on</em>: Aug 15, 2021 
-        <small>
-            Written by Stephanie Eckles
-            <a href="htpps://twitter.com/5t3ph/" aria-label="Twitter">_</a>
-        </small>
-    </p>
-    <img src="https://d33wubrfki0l68.cloudfront.net/4ddbbe434dc362c6c06f912339d496bc33a25df3/0ad60/img/avatars/steph.jpg" alt="" width="100">
-    <p>
-        This is <strong>episode #28</strong> in a series examining modern CSS solutions
-        to problems Stephanie Eckles has been solving over the last 14+ years as a front-end dev.
-    </p>
-    <details id="toc" open="">
-        <summary>
-            Table of Contents
-        </summary>
-        <ol>
-            <li><a href="#calc">calc()</a></li>
-            <li><a href="#clamp">clamp()</a></li>
-            <li><a href="#min">min()</a></li>
-            <li><a href="#max">max()</a></li>
-            <li><a href="#putting-it-all-together">Putting It All Together</a></li>
-        </ol>
-    <p>
-        There are currently <a href="https://caniuse.com/css-math-functions">four
-        well-supported math functions in CSS.</a> I've found each of them to be
-        extremely useful in my daily work. These CSS functions can be used in 
-        perhaps unexpected ways, such as within gradients and color functions
-        and in combination with CSS custom properties. We'll learn the syntax
-        for each, view basic demos of their functionality, and explore practical use cases.
-    </p>
-    </details>
-    <h2 id="calc">
-       <code>calc()</code>
-    </h2>
-    <blockquote>
+    <nav>
+        <a href="https://moderncss.dev/">Episode List</a>
+        <a href="https://moderncss.dev/">M</a>
+        <a href="https://moderncss.dev/topics/">Topics List</a>
+    </nav>
+    <header>
+        <h1>Practical Uses of CSS Math Functions: calc, clamp, min, max</h1>
         <p>
-            <strong>Practical purpose of <code>calc()</code></strong>: performing 
-            basic math operations, with the ability to interpolate between unit 
-            types (ex. <code>rem</code> to <code>vw</code>).
+            <em>Posted on</em>: Aug 15, 2021 
+            <small>
+                Written by Stephanie Eckles
+                <a href="htpps://twitter.com/5t3ph/" aria-label="Twitter">_</a>
+            </small>
         </p>
-    </blockquote>
-    <p>
-        This math function has the longest cross-browser support of the four functions
-        we're exploring. It has a wide range of uses for any time you'd like to be
-        able to do client-side math within your styles.
-    </p>
-    <p>
-        For example, you may want something to take up most of the viewport height except
-        the height of the navigation. For this purpose, you can mix units to pass a relative
-        <code>vh</code> (view height) unit with an absolute pixel unit:
-    </p>
-    <pre><code>.content {
-    height: calc(100vh - 60px);
-}</code></pre>
-    <p>
-        As the viewport resizes or a user visits on larger or
-        smaller devices, the value of <code>100vh</code> will dynamically
-        update, and therefore so will the calculation.
-    </p>
-    <blockquote>
+    </header>
+    <aside>
+        <img src="https://d33wubrfki0l68.cloudfront.net/4ddbbe434dc362c6c06f912339d496bc33a25df3/0ad60/img/avatars/steph.jpg" alt="" width="100">
         <p>
-            The benefit of <code>calc()</code> is in allowing you to avoid
-            either hard-coding a range of magic numbers or
-            adding a JavaScript solution to calculate the
-            value needed to apply it as an inline style.
+            This is <strong>episode #28</strong> in a series examining modern CSS solutions
+            to problems Stephanie Eckles has been solving over the last 14+ years as a front-end dev.
         </p>
-    </blockquote>
-    <h3>Using <code>calc()</code> For Generative Color Palettes</h3>
-    <p>
-        We can extend the capabilities of calc() 
-        by passing in CSS custom properties.
-    </p>
-    <p>
-        An example of this being very useful is creating
-        a consistent color palette using <code>hsl()</code> 
-        (which stands for hue, saturation, and lightness).
-        Given values for saturation, lightness,
-        and a starting hue, we can calculate complementary
-        values to build a full palette. 
-        Because of the commonality among the saturation
-        and lightness values, the palette will feel
-        cohesive.
-    </p>
-    <details id="toc" open="">
-        <summary>
-            CSS for "Using calc() to create an HSL color palette"  
-        </summary>
-            <pre class="language-css">
-.colors {
-  --base-hue: 140;
-  --saturation: 95%;
-  --lightness: 80%;
-  --rotation: 60;  
-  
-  color: #222;
-  text-align: center;
-}
+        <details id="toc" open="">
+            <summary>
+                Table of Contents
+            </summary>
+            <nav>
+                <ol>
+                    <li><a href="#calc">calc()</a></li>
+                    <li><a href="#clamp">clamp()</a></li>
+                    <li><a href="#min">min()</a></li>
+                    <li><a href="#max">max()</a></li>
+                    <li><a href="#putting-it-all-together">Putting It All Together</a></li>
+                </ol>
+            </nav>
+    </aside>
+    <main>
+        <p>
+            There are currently <a href="https://caniuse.com/css-math-functions">four
+            well-supported math functions in CSS.</a> I've found each of them to be
+            extremely useful in my daily work. These CSS functions can be used in 
+            perhaps unexpected ways, such as within gradients and color functions
+            and in combination with CSS custom properties. We'll learn the syntax
+            for each, view basic demos of their functionality, and explore practical use cases.
+        </p>
+        </details>
+        <h2 id="calc">
+        <code>calc()</code>
+        </h2>
+        <blockquote>
+            <p>
+                <strong>Practical purpose of <code>calc()</code></strong>: performing 
+                basic math operations, with the ability to interpolate between unit 
+                types (ex. <code>rem</code> to <code>vw</code>).
+            </p>
+        </blockquote>
+        <p>
+            This math function has the longest cross-browser support of the four functions
+            we're exploring. It has a wide range of uses for any time you'd like to be
+            able to do client-side math within your styles.
+        </p>
+        <p>
+            For example, you may want something to take up most of the viewport height except
+            the height of the navigation. For this purpose, you can mix units to pass a relative
+            <code>vh</code> (view height) unit with an absolute pixel unit:
+        </p>
+        <pre><code>.content {
+        height: calc(100vh - 60px);
+    }</code></pre>
+        <p>
+            As the viewport resizes or a user visits on larger or
+            smaller devices, the value of <code>100vh</code> will dynamically
+            update, and therefore so will the calculation.
+        </p>
+        <blockquote>
+            <p>
+                The benefit of <code>calc()</code> is in allowing you to avoid
+                either hard-coding a range of magic numbers or
+                adding a JavaScript solution to calculate the
+                value needed to apply it as an inline style.
+            </p>
+        </blockquote>
+        <h3>Using <code>calc()</code> For Generative Color Palettes</h3>
+        <p>
+            We can extend the capabilities of calc() 
+            by passing in CSS custom properties.
+        </p>
+        <p>
+            An example of this being very useful is creating
+            a consistent color palette using <code>hsl()</code> 
+            (which stands for hue, saturation, and lightness).
+            Given values for saturation, lightness,
+            and a starting hue, we can calculate complementary
+            values to build a full palette. 
+            Because of the commonality among the saturation
+            and lightness values, the palette will feel
+            cohesive.
+        </p>
+        <details id="toc" open="">
+            <summary>
+                CSS for "Using calc() to create an HSL color palette"  
+            </summary>
+                <pre class="language-css">
+    .colors {
+    --base-hue: 140;
+    --saturation: 95%;
+    --lightness: 80%;
+    --rotation: 60;  
+    
+    color: #222;
+    text-align: center;
+    }
 
-.color {
-    padding: 0.25rem;
-    background-color: hsl(var(--hue), var(--saturation), var(--lightness));
-}
-  
-.color1 {
-    --hue: calc(var(--base-hue));
-}
-  
-.color2 {
-    --hue: calc(var(--base-hue) + var(--rotation));
-}
-  
-.color3 {
-    --hue: calc(var(--base-hue) + var(--rotation) * 2);
-}
-            </pre>
-    </details>
-    <ul>
-        <li>Color 1</li>
-        <li>Color 2</li>
-        <li>Color 3</li>
-    </ul>
-<h2><code>clamp()</code></h2>
-    <blockquote>
+    .color {
+        padding: 0.25rem;
+        background-color: hsl(var(--hue), var(--saturation), var(--lightness));
+    }
+    
+    .color1 {
+        --hue: calc(var(--base-hue));
+    }
+    
+    .color2 {
+        --hue: calc(var(--base-hue) + var(--rotation));
+    }
+    
+    .color3 {
+        --hue: calc(var(--base-hue) + var(--rotation) * 2);
+    }
+                </pre>
+        </details>
+        <ul>
+            <li>Color 1</li>
+            <li>Color 2</li>
+            <li>Color 3</li>
+        </ul>
+        <h2><code>clamp()</code></h2>
+        <blockquote>
+            <p>
+                <strong>Practical purpose of</strong>
+                <code>clamp()</code>: setting boundaries
+                on a range of acceptable values. 
+            </p>
+        </blockquote>
         <p>
-            <strong>Practical purpose of</strong>
-            <code>clamp()</code>: setting boundaries
-            on a range of acceptable values. 
+            The <code>clamp()</code> function takes three values,
+            and order matters. The first is the lowest
+            value in your range, the middle is your
+            ideal value, and the third is the highest
+            value in your range. 
         </p>
-    </blockquote>
-    <p>
-        The <code>clamp()</code> function takes three values,
-        and order matters. The first is the lowest
-        value in your range, the middle is your
-        ideal value, and the third is the highest
-        value in your range. 
-    </p>
-    <p>
-        An area you may have already encountered the use
-        of <code>clamp()</code> is for fluid typography. 
-        The essential concept is that the <code>font-size</code> 
-        value can fluidly adjust based on the viewport size.
-        This is intended to prevent large headlines triggering
-        overflow, or taking up too much of the viewport.  
-    </p>
-    <p>
-        A very basic definition for a fluid <code>h1</code> style:
-    </p>
-    <pre>
-h1 {
-  font-size: clamp(1.75rem, 4vw + 1rem, 3rem);
-}</pre>
-    <p>
-        You can <a href=
-        "https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/">
-        read more about generating fluid type in the Modern
-        CSS episode 12.</a> 
-    </p>
-    <h3>Relative Responsive Padding With <code>clamp()</code></h3>
-    <p>
-        Another example can be seen in <a href="https://smolcss.dev/#smol-responsive-padding">
-        my demo from SmolCSS on responsive padding</a>. 
-        The interesting thing about
-        using percentages for padding is that it is relative
-        to the element's width. This means it's a bit like
-        a container-relative unit, which we can use similar
-        to how you might think of <code>vw</code>.
-    </p>
-    <p>
-        The example from SmolCSS uses the following padding
-        definition, where the padding will grow and shrink
-        relative to the element's width. It will never be
-        less than 1rem, and never greater than <code>3rem</code>:
-    </p>
-<pre>
-.element {
-  padding: 1.5rem clamp(1rem, 5%, 3rem);
-}
-</pre>
-    <p>
-        You may have realized this again removes some
-        scenarios where you might have previously reached
-        for media queries. Instead of micro-managing this
-        spacing or worrying about strictly adhering to a
-        pixel ramp (ex 8, 12, 24, 36), you can set up
-        sensible guidelines for a responsive transition.  
-    </p>
-    <p>
-        The most significant benefit here versus media
-        queries is that since this padding definition
-        is element relative, it will be larger when
-        the element has more space on the page and
-        smaller if, for example, it's placed in a narrow
-        column. This would take a lot of coordination
-        with media-query-based utility classes!
-    </p>
-    <h2><code>min()</code></h2>
+        <p>
+            An area you may have already encountered the use
+            of <code>clamp()</code> is for fluid typography. 
+            The essential concept is that the <code>font-size</code> 
+            value can fluidly adjust based on the viewport size.
+            This is intended to prevent large headlines triggering
+            overflow, or taking up too much of the viewport.  
+        </p>
+        <p>
+            A very basic definition for a fluid <code>h1</code> style:
+        </p>
+        <pre>
+    h1 {
+    font-size: clamp(1.75rem, 4vw + 1rem, 3rem);
+    }</pre>
+        <p>
+            You can <a href="https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/">
+            read more about generating fluid type in the Modern
+            CSS episode 12.</a> 
+        </p>
+        <h3>Relative Responsive Padding With <code>clamp()</code></h3>
+        <p>
+            Another example can be seen in <a href="https://smolcss.dev/#smol-responsive-padding">
+            my demo from SmolCSS on responsive padding</a>. 
+            The interesting thing about
+            using percentages for padding is that it is relative
+            to the element's width. This means it's a bit like
+            a container-relative unit, which we can use similar
+            to how you might think of <code>vw</code>.
+        </p>
+        <p>
+            The example from SmolCSS uses the following padding
+            definition, where the padding will grow and shrink
+            relative to the element's width. It will never be
+            less than 1rem, and never greater than <code>3rem</code>:
+        </p>
+        <pre>
+    .element {
+    padding: 1.5rem clamp(1rem, 5%, 3rem);
+    }
+        </pre>
+        <p>
+            You may have realized this again removes some
+            scenarios where you might have previously reached
+            for media queries. Instead of micro-managing this
+            spacing or worrying about strictly adhering to a
+            pixel ramp (ex 8, 12, 24, 36), you can set up
+            sensible guidelines for a responsive transition.  
+        </p>
+        <p>
+            The most significant benefit here versus media
+            queries is that since this padding definition
+            is element relative, it will be larger when
+            the element has more space on the page and
+            smaller if, for example, it's placed in a narrow
+            column. This would take a lot of coordination
+            with media-query-based utility classes!
+        </p>
+        <h2><code>min()</code></h2>
         <blockquote>
             <strong>Practical purpose of 
             <code>min()</code></strong>: setting boundaries on the
             maximum allowed value in a way that encompasses
             the responsive context of an element.
         </blockquote>
-    <p>
-        That's right - despite being the <code>min()</code> function,
-        the outcome is that the provided values will
-        act as a maximum allowed value for the property. 
-    </p>
-    <p>
-        Given <code>width: min(80ch, 100vw)</code>, the outcome is that
-        on a larger viewport, the <code>80ch</code> will be selected
-        because it is the smaller value of the two options,
-        yet it <em>acts like</em> a maximum based on contextually
-        available space. Once the viewport shrinks, 
-        <code>100vw</code> will be used because it is computed as <em>smaller
-        than</em> <code>80ch</code>, yet it's actually providing a maximum
-        boundary for the element's width.
-    </p>
-    <h3>The Modern CSS <code>.container</code> Class</h3>
-    <p>
-        The example just provided is my preferred way
-        to define a <code>.container</code>, with one tiny tweak.
-        The <code>min()</code> function allows nested basic math
-        operations, which means we can flip to subtracting
-        some space as a swap for defining left and
-        right padding, as follows:
-    </p>
-    <pre>
-.container {
-  width: min(80ch, 100vw - 2rem);
-}
-    </pre>
-    <p>
-        On larger viewports, the element can grow to
-        a <em>max</em> of <em>80ch</em>, and once the viewport shrinks
-        below that width, it will be allowed to grow
-        to <code>100vw - 2rem</code>. This definition effectively
-        produces <code>1rem</code> of "padding" on either
-        side of the element. 
-    </p>
-    <p>
-        In this example, you could also swap to <code>100%</code>
-        instead of vw to make the element width 
-        responsive within a <em>parent container</em>, 
-        as used for this demo:
-    </p>
-    <details id="toc" open="">
-        <summary>
-            CSS for "The Modern CSS .container Class"
-        </summary>
-            <pre>
-.container {
-  width: min(40ch, 100% - 2rem);
-  margin-right: auto;
-  margin-left: auto;
-}           </pre>
-    </details>
-    <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing
-        elit. Vero a quam labore inventore iste eligendi,
-        quasi velit, qui repellendus voluptatem temporibus
-        nisi. Pariatur nesciunt at dolorum, cumque illum
-        maiores animi?
-    </p>
-    <blockquote>
         <p>
-            <em>Quick note</em>: The <code>ch</code> unit is equal to the width
-            of the <code>0</code> character given all current <code>font</code>
-            properties at the time it is applied.
-            This makes it an excellent choice for approximating
-            line length for a better reading experience, for example.
+            That's right - despite being the <code>min()</code> function,
+            the outcome is that the provided values will
+            act as a maximum allowed value for the property. 
         </p>
-    </blockquote>
-    <p>
-        <strong>What's the benefit</strong>? 
-        Responsive sizing without
-        the need for media queries! It seems to be
-        a common theme for these functions 😉
-    </p>
-    <p>
-        The <code>min()</code> function is my most used of the math functions.
-        Let's look at some more amazing upgrades
-        to practical scenarios.
-    </p>
-    <h3>Responsive Element Sizing with <code>min()</code></h3>
-    <p>
-        <strong>Any time you would like to size an element responsively,</strong>
-        <strong><code>min()</code> can be a great choice</strong>.
-        For example, I explored <a href="">using
-        <code>min()</code> to control sizing an avatar</a>  within a comment thread
-        in Modern CSS episode 26.
-    </p>
-    <p>
-        In the avatar example, we ended up applying
-        <em>three</em> values with different units: 
-        <code>min(64px, 15%, 10vw)</code>.
-        Another way to read this is that the avatar
-        size will not exceed one of those values at
-        any given time, with the browser selecting
-        whichever is the <em>minimum</em> computed value.
-    </p>
-    <p>
-        This definition works out to never having an
-        avatar larger than <code>64px</code>. Particularly in a
-        zoom scenario, the <code>10vw</code> helps the size feel
-        more relative. 
-        And the <code>15%</code> helps keep the size relative to the
-        element, which may have a more visually appealing
-        result before the <code>10vw</code> applies.
-    </p>
-    <p>
-        <strong>Join my newsletter</strong> 
-        for article updates, 
-        CSS tips, and front-end resources!
-    </p>
-    <form class="form"
-            action="/success" method="post"
-            name="newsletter">
-        <input type="hidden" name="form-name"
-            value="newsletter">
-            <p hidden="">
-                <label>
-                    Don't fill this out if you're human:
-                    <input name="bot_field">
-                </label>
+        <p>
+            Given <code>width: min(80ch, 100vw)</code>, the outcome is that
+            on a larger viewport, the <code>80ch</code> will be selected
+            because it is the smaller value of the two options,
+            yet it <em>acts like</em> a maximum based on contextually
+            available space. Once the viewport shrinks, 
+            <code>100vw</code> will be used because it is computed as <em>smaller
+            than</em> <code>80ch</code>, yet it's actually providing a maximum
+            boundary for the element's width.
+        </p>
+        <h3>The Modern CSS <code>.container</code> Class</h3>
+        <p>
+            The example just provided is my preferred way
+            to define a <code>.container</code>, with one tiny tweak.
+            The <code>min()</code> function allows nested basic math
+            operations, which means we can flip to subtracting
+            some space as a swap for defining left and
+            right padding, as follows:
+        </p>
+        <pre>
+    .container {
+    width: min(80ch, 100vw - 2rem);
+    }
+        </pre>
+        <p>
+            On larger viewports, the element can grow to
+            a <em>max</em> of <em>80ch</em>, and once the viewport shrinks
+            below that width, it will be allowed to grow
+            to <code>100vw - 2rem</code>. This definition effectively
+            produces <code>1rem</code> of "padding" on either
+            side of the element. 
+        </p>
+        <p>
+            In this example, you could also swap to <code>100%</code>
+            instead of vw to make the element width 
+            responsive within a <em>parent container</em>, 
+            as used for this demo:
+        </p>
+        <details id="toc" open="">
+            <summary>
+                CSS for "The Modern CSS .container Class"
+            </summary>
+            <pre>
+    .container {
+    width: min(40ch, 100% - 2rem);
+    margin-right: auto;
+    margin-left: auto;
+    }           
+            </pre>
+        </details>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing
+            elit. Vero a quam labore inventore iste eligendi,
+            quasi velit, qui repellendus voluptatem temporibus
+            nisi. Pariatur nesciunt at dolorum, cumque illum
+            maiores animi?
+        </p>
+        <blockquote>
+            <p>
+                <em>Quick note</em>: The <code>ch</code> unit is equal to the width
+                of the <code>0</code> character given all current <code>font</code>
+                properties at the time it is applied.
+                This makes it an excellent choice for approximating
+                line length for a better reading experience, for example.
             </p>
-    <div class="form-inline">
-        <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" class="form-field" 
-                required="" type="text" name="email">
-        </div>
+        </blockquote>
+        <p>
+            <strong>What's the benefit</strong>? 
+            Responsive sizing without
+            the need for media queries! It seems to be
+            a common theme for these functions 😉
+        </p>
+        <p>
+            The <code>min()</code> function is my most used of the math functions.
+            Let's look at some more amazing upgrades
+            to practical scenarios.
+        </p>
+        <h3>Responsive Element Sizing with <code>min()</code></h3>
+        <p>
+            <strong>Any time you would like to size an element responsively,</strong>
+            <strong><code>min()</code> can be a great choice</strong>.
+            For example, I explored <a href="">using
+            <code>min()</code> to control sizing an avatar</a>  within a comment thread
+            in Modern CSS episode 26.
+        </p>
+        <p>
+            In the avatar example, we ended up applying
+            <em>three</em> values with different units: 
+            <code>min(64px, 15%, 10vw)</code>.
+            Another way to read this is that the avatar
+            size will not exceed one of those values at
+            any given time, with the browser selecting
+            whichever is the <em>minimum</em> computed value.
+        </p>
+        <p>
+            This definition works out to never having an
+            avatar larger than <code>64px</code>. Particularly in a
+            zoom scenario, the <code>10vw</code> helps the size feel
+            more relative. 
+            And the <code>15%</code> helps keep the size relative to the
+            element, which may have a more visually appealing
+            result before the <code>10vw</code> applies.
+        </p>
+        <p>
+            <strong>Join my newsletter</strong> 
+            for article updates, 
+            CSS tips, and front-end resources!
+        </p>
+        <form action="/aaas/" method="get" target="_blank">
+            <label for="inputEmail">Ingrese su Email</label>
+            <input id="inputEmail" required type="text" name="email">
+            <label for="animal">Animal</label>
+            <select name="animal" id="animal">  
+                <option value="dog">dog</option>
+                <option value="cat">cat</option>
+            </select>
             <button class="button" type="submit">
                 Sign Up
             </button>
-        </div>
-    </form>
-<h3>Using <code>min()</code> Within Other Properties</h3>
-    <p>
-        CSS math functions can be used in most properties
-        that allow a numeric value. One unique place to
-        use them is within <code>background-size</code>.
-    </p>
-    <p>
-        Why? Perhaps you're supplying a layered effect of
-        a background color and an image. And rather than
-        using the <code>cover</code> size value, which would make the
-        image fill the space, you would like to cap the
-        growth of the image. This is a perfect place to
-        bring in <code>min()</code>.  
-    </p>
-    <p>
-        Consider the following example, where <code>min()</code> is used
-        to ensure the image doesn't exceed <code>600px</code> while being
-        allowed to respond down with the element by also
-        setting <code>100%</code>. In other words, it will
-        grow <em>up to</em> <code>600px</code>
-        and then resize itself down to match the element's
-        width when it is less than <code>600px</code>.
-    </p>
-    <details id="toc" open="">
-        <summary>CSS for "Controlling background-size with min()"</summary>
+        </form>
+        <h3>Using <code>min()</code> Within Other Properties</h3>
+        <p>
+            CSS math functions can be used in most properties
+            that allow a numeric value. One unique place to
+            use them is within <code>background-size</code>.
+        </p>
+        <p>
+            Why? Perhaps you're supplying a layered effect of
+            a background color and an image. And rather than
+            using the <code>cover</code> size value, which would make the
+            image fill the space, you would like to cap the
+            growth of the image. This is a perfect place to
+            bring in <code>min()</code>.  
+        </p>
+        <p>
+            Consider the following example, where <code>min()</code> is used
+            to ensure the image doesn't exceed <code>600px</code> while being
+            allowed to respond down with the element by also
+            setting <code>100%</code>. In other words, it will
+            grow <em>up to</em> <code>600px</code>
+            and then resize itself down to match the element's
+            width when it is less than <code>600px</code>.
+        </p>
+        <details id="toc" open="">
+            <summary>CSS for "Controlling background-size with min()"</summary>
             <pre>
-.background-image {
-  background: #1F1B1C url(https://source.unsplash.com/RapCPd_mJTU/800x800) no-repeat center;
-  background-size: min(600px, 100%);
-}           </pre>
-    </details>
-    <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Vero a quam labore inventore iste eligendi, quasi velit. 
-    </p>
-    <h2><code>max()</code></h2>
+    .background-image {
+    background: #1F1B1C url(https://source.unsplash.com/RapCPd_mJTU/800x800) no-repeat center;
+    background-size: min(600px, 100%);
+    }           
+            </pre>
+        </details>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Vero a quam labore inventore iste eligendi, quasi velit. 
+        </p>
+        <h2><code>max()</code></h2>
         <blockquote>
             <p>
                 <strong>Practical purpose of <code>max()</code></strong>: setting boundaries
@@ -391,181 +391,181 @@ h1 {
                 encompasses the responsive context of an element. 
             </p>
         </blockquote>
-    <p>
-        Yup, <code>max()</code> is the opposite of <code>max()</code>! So now we are
-        setting up definitions for the <em>minimum</em> allowed values. 
-        Let's get right to the examples!
-    </p>
-    <h3>Contextual Margins with <code>max()</code></h3>
-    <p>
-        After learning about the <a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">
-        Web Content Accessibility Guidelines (WCAG) Success Criterion 1.4.10</a> 
-        for reflow, which states that a user should be able to use zoom 
-        to magnify your site to 400%, I noticed that pixels 
-        and rems become a subpar unit in that context.
-    </p>
-    <p>
-        Given a desktop size of 1280px at 400% zoom, 
-        your content is equivalent to a device at 320px. 
-        However - versus a mobile phone - the orientation 
-        is still landscape. A viewport of this size means 
-        a much-reduced area to read and perform actions. 
-        Additionally, sizes that seemed appropriate for a 
-        phone become a lot large contextually when viewed 
-        in a zoomed-in window.
-    </p>
-    <p>
-        Fortunately, <code>max()</code> gives us one way 
-        to in particular handle margins more gracefully. 
-        I avoid pixel values for everything in my personal work 
-        and usually prefer rem for smaller spaces. 
-        But for larger spaces intended to separate content 
-        sections, I use the following, which allows relative
-        growth for tall viewports and reduces distance for 
-        shorter viewports, which also applies to zoomed viewports.
-    </p>
-    <pre>
-.element + .element {
-  margin-top: max(8vh, 2rem);
-}   
-    </pre>
-    <p> On the taller viewports, 8vh will be used, and on 
-        smaller or zoomed-in viewports, 2rem will be used. 
-        I encourage you to try this out and spend some 
-        time testing across viewports, devices, and with
-        and without zooming into your layout. 
-        This technique is a small upgrade that can make
-        a significant difference for the end-user.
-    </p>
-    <blockquote>
         <p>
-            Review an expanded example of this scenario and 
-                <a href="https://moderncss.dev/modern-css-upgrades-to-improve-accessibility/#desktop-zoom-and-reflow">
-            learn more about reflow</a> 
-            in the Modern CSS episode 27.
+            Yup, <code>max()</code> is the opposite of <code>max()</code>! So now we are
+            setting up definitions for the <em>minimum</em> allowed values. 
+            Let's get right to the examples!
         </p>
-    </blockquote>
-    <h3>Prevent Browser Zoom on Inputs in iOS with <code>max()</code></h3>
-    <p>
-        Have you ever experienced forced browser zoom
-        once you focused a form input on iOS? 
-        This consequence will happen for any input 
-        that has a font-size less than <code>16px</code>.
-    </p>
-    <p>
-        Here's the fix, originally linked in <a href="https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/">Modern 
-        CSS episode 21 about custom form input styles</a>, 
-        with full credit to <a href="https://dev.to/danburzo/css-micro-tip-make-mobile-safari-not-have-to-zoom-into-inputs-1fc1">
-        Dan Burzo</a> for this simple solution:
-    </p>
-    <pre>
-input {
-  font-size: max(16px, 1rem);
-}
-    </pre>
-    <p>Where <code>1rem</code> could be swapped with a Sass variable 
-        or a CSS custom property. This use of <code>max()</code> 
-        ensures that regardless of another value provided, 
-        the <code>font-size</code> will be <em>at least</em> 
-        <code>16px</code> and therefore prevent the 
-        forced browser zoom.
-    </p>
-    <h3>Relative Focus Outlines with <code>max()</code></h3>
-    <p>
-        The latest addition to my CSS reset uses 
-        <code>min()</code> to apply relative sizing 
-        for focus outlines.
-    </p>
-    <p>
-        This is a reduced snippet, but by using <code>max()</code>, 
-        we ensure a <em>minimum</em> outline size of <code>2px</code>, while 
-        allowing it to <em>grow</em> relative to the element by 
-        using the font-relative <code>em</code> value.
-    </p>
-    <pre>
-a {
-  --outline-size: max(2px, 0.08em);
-  --outline-style: solid;
-  --outline-color: currentColor;
-}
+        <h3>Contextual Margins with <code>max()</code></h3>
+        <p>
+            After learning about the <a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow.html">
+            Web Content Accessibility Guidelines (WCAG) Success Criterion 1.4.10</a> 
+            for reflow, which states that a user should be able to use zoom 
+            to magnify your site to 400%, I noticed that pixels 
+            and rems become a subpar unit in that context.
+        </p>
+        <p>
+            Given a desktop size of 1280px at 400% zoom, 
+            your content is equivalent to a device at 320px. 
+            However - versus a mobile phone - the orientation 
+            is still landscape. A viewport of this size means 
+            a much-reduced area to read and perform actions. 
+            Additionally, sizes that seemed appropriate for a 
+            phone become a lot large contextually when viewed 
+            in a zoomed-in window.
+        </p>
+        <p>
+            Fortunately, <code>max()</code> gives us one way 
+            to in particular handle margins more gracefully. 
+            I avoid pixel values for everything in my personal work 
+            and usually prefer rem for smaller spaces. 
+            But for larger spaces intended to separate content 
+            sections, I use the following, which allows relative
+            growth for tall viewports and reduces distance for 
+            shorter viewports, which also applies to zoomed viewports.
+        </p>
+        <pre>
+    .element + .element {
+    margin-top: max(8vh, 2rem);
+    }   
+        </pre>
+        <p> On the taller viewports, 8vh will be used, and on 
+            smaller or zoomed-in viewports, 2rem will be used. 
+            I encourage you to try this out and spend some 
+            time testing across viewports, devices, and with
+            and without zooming into your layout. 
+            This technique is a small upgrade that can make
+            a significant difference for the end-user.
+        </p>
+        <blockquote>
+            <p>
+                Review an expanded example of this scenario and 
+                    <a href="https://moderncss.dev/modern-css-upgrades-to-improve-accessibility/#desktop-zoom-and-reflow">
+                learn more about reflow</a> 
+                in the Modern CSS episode 27.
+            </p>
+        </blockquote>
+        <h3>Prevent Browser Zoom on Inputs in iOS with <code>max()</code></h3>
+        <p>
+            Have you ever experienced forced browser zoom
+            once you focused a form input on iOS? 
+            This consequence will happen for any input 
+            that has a font-size less than <code>16px</code>.
+        </p>
+        <p>
+            Here's the fix, originally linked in <a href="https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/">Modern 
+            CSS episode 21 about custom form input styles</a>, 
+            with full credit to <a href="https://dev.to/danburzo/css-micro-tip-make-mobile-safari-not-have-to-zoom-into-inputs-1fc1">
+            Dan Burzo</a> for this simple solution:
+        </p>
+        <pre>
+    input {
+    font-size: max(16px, 1rem);
+    }
+        </pre>
+        <p>Where <code>1rem</code> could be swapped with a Sass variable 
+            or a CSS custom property. This use of <code>max()</code> 
+            ensures that regardless of another value provided, 
+            the <code>font-size</code> will be <em>at least</em> 
+            <code>16px</code> and therefore prevent the 
+            forced browser zoom.
+        </p>
+        <h3>Relative Focus Outlines with <code>max()</code></h3>
+        <p>
+            The latest addition to my CSS reset uses 
+            <code>min()</code> to apply relative sizing 
+            for focus outlines.
+        </p>
+        <p>
+            This is a reduced snippet, but by using <code>max()</code>, 
+            we ensure a <em>minimum</em> outline size of <code>2px</code>, while 
+            allowing it to <em>grow</em> relative to the element by 
+            using the font-relative <code>em</code> value.
+        </p>
+        <pre>
+    a {
+    --outline-size: max(2px, 0.08em);
+    --outline-style: solid;
+    --outline-color: currentColor;
+    }
 
-a:focus {
-  outline: var(--outline-size) var(--outline-style) var(--outline-color);
-  outline-offset: var(--outline-size);
-}
-    </pre>
-    <h3>Accessible Target Sizes with <code>max()</code></h3>
-    <p>
-        The term "target size" comes from <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html">
-        WCAG Success Criterion (SC) 2.5.5</a>, where "target" 
-        refers to the area that will receive a pointer event 
-        (ex. mouse click or touch tap). In the upcoming 
-        WCAG 2.2, SC 2.5.5 is now the "Enhanced" version, 
-        which has a minimum size of <code>44px</code>. 
-    </p>
-    <p>
-        For this guideline, consider buttons that only use icons 
-        or the avatar from our earlier example that links to a 
-        profile. Or perhaps a dual-action button where a dropdown
-        arrow is a separate action from the primary button 
-        control.
-    </p>
-    <p>
-        In these instances, we can use <code>max()</code> similarly to 
-        when we provided a guardrail to prevent the input 
-        zooming. We'll set <code>44px</code> as one of the values within 
-        <code>max()</code> so that at <em>minimum</em>, that is the element's size.
-    </p>
-        <pre>
-.icon-button {
-  width: max(44px, 2em);
-  height: max(44px, 2em);
-}            
+    a:focus {
+    outline: var(--outline-size) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-size);
+    }
         </pre>
-    <p>
-        It should be noted that this criterion also considers 
-        the space around the element, which if combined with 
-        the element's actual size is <em>at least</em> 
-        <code>44px</code>, then the criterion is passed 
-        successfully. As with all of these techniques, 
-        be sure to test with your actual product and 
-        with real users!
-    </p>
-    <h3>Using <code>max()</code> As A Fallback for CSS <code>aspect-ratio</code></h3>
-    <p>
-        Another way I've used <code>max()</code> is to set an image height 
-        when using <code>aspect-ratio</code> to enable an acceptable 
-        experience for browsers that do not yet support that 
-        property.
-    </p>
-    <p>
-        You can see the following sample fully in use for 
-        the <a href="https://smolcss.dev/#smol-card-component">
-        SmolCSS demo for a composable card component</a>.
-    </p>
+        <h3>Accessible Target Sizes with <code>max()</code></h3>
+        <p>
+            The term "target size" comes from <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html">
+            WCAG Success Criterion (SC) 2.5.5</a>, where "target" 
+            refers to the area that will receive a pointer event 
+            (ex. mouse click or touch tap). In the upcoming 
+            WCAG 2.2, SC 2.5.5 is now the "Enhanced" version, 
+            which has a minimum size of <code>44px</code>. 
+        </p>
+        <p>
+            For this guideline, consider buttons that only use icons 
+            or the avatar from our earlier example that links to a 
+            profile. Or perhaps a dual-action button where a dropdown
+            arrow is a separate action from the primary button 
+            control.
+        </p>
+        <p>
+            In these instances, we can use <code>max()</code> similarly to 
+            when we provided a guardrail to prevent the input 
+            zooming. We'll set <code>44px</code> as one of the values within 
+            <code>max()</code> so that at <em>minimum</em>, that is the element's size.
+        </p>
         <pre>
-img {
-  /* Fallback for `aspect-ratio` of defining a height */
-  height: max(18vh, 12rem);
-  object-fit: cover;
-  width: 100%;
-}
-              
-/* When supported, use `aspect-ratio` */
-@supports (aspect-ratio: 1) {
-  img {
-    aspect-ratio: var(--img-ratio);
-    height: auto;
-  }
-}  
+    .icon-button {
+    width: max(44px, 2em);
+    height: max(44px, 2em);
+    }            
         </pre>
-    <h2>Putting It All Together</h2>
-    <p>
-        This final demo shows an example of applying multiple 
-        CSS math functions to allow responsive sizing across 
-        several properties. Note the comments alongside the 
-        demonstrated code.
-    </p>
-    
+        <p>
+            It should be noted that this criterion also considers 
+            the space around the element, which if combined with 
+            the element's actual size is <em>at least</em> 
+            <code>44px</code>, then the criterion is passed 
+            successfully. As with all of these techniques, 
+            be sure to test with your actual product and 
+            with real users!
+        </p>
+        <h3>Using <code>max()</code> As A Fallback for CSS <code>aspect-ratio</code></h3>
+        <p>
+            Another way I've used <code>max()</code> is to set an image height 
+            when using <code>aspect-ratio</code> to enable an acceptable 
+            experience for browsers that do not yet support that 
+            property.
+        </p>
+        <p>
+            You can see the following sample fully in use for 
+            the <a href="https://smolcss.dev/#smol-card-component">
+            SmolCSS demo for a composable card component</a>.
+        </p>
+        <pre>
+    img {
+    /* Fallback for `aspect-ratio` of defining a height */
+    height: max(18vh, 12rem);
+    object-fit: cover;
+    width: 100%;
+    }
+                
+    /* When supported, use `aspect-ratio` */
+    @supports (aspect-ratio: 1) {
+    img {
+        aspect-ratio: var(--img-ratio);
+        height: auto;
+    }
+    }  
+        </pre>
+        <h2>Putting It All Together</h2>
+        <p>
+            This final demo shows an example of applying multiple 
+            CSS math functions to allow responsive sizing across 
+            several properties. Note the comments alongside the 
+            demonstrated code.
+        </p>
+    </main>
 </body>
 </html>
