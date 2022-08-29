@@ -81,5 +81,17 @@ header a:hover{
     text-align: center;
     flex-direction: column;
     height: 90vh;
-    background-image: url("imagenes/DSC04281.jpg");
+    background-image: url("");
 }
+
+#somos-ganga{
+    background-color: rgb(46, 44, 44);
+    color: greenyellow;
+
+}
+
+#somos-ganga .section{
+    text-align: center;
+
+}
+
