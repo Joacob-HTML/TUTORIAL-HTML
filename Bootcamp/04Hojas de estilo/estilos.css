@@ -1,0 +1,33 @@
+/*Estoy probando colores y fuentes*/
+
+h1 {
+    color: red;
+}
+p {
+    color: brown;
+    font-size: 14pt;
+}
+
+#primera-not {
+    color: aquamarine;
+    font-size: 12pt;
+}
+#segunda-not {
+    color: lightslategray;
+    font-size: 13pt;
+}
+
+.encabezado {
+    font-size: 20;
+    text-transform: uppercase;
+
+}
+.warning {
+    color: red;
+    font-size: 15pt;
+}
+
+.autor, .fecha, .ubicacion, h1, #segunda-not {
+    text-decoration: underline;
+}
+
