@@ -1,0 +1,25 @@
+.colores {
+    color: #55505C;
+}
+.color-hexadecimal {
+    color: #5D737E;
+}
+.color-rgb{
+    color: #7FC6A4;
+}
+.color-rgba{
+    color: #D6F8D6;
+}
+.color-nashe{
+    color: #FAF33E;
+}
+.fondo{
+    background-color: #5D737E;
+    background-image: url(https://imgs.search.brave.com/c6kU1NB6vbb9DhHPc-9Ewg0N-bwOIqZl42jJfWd-e7o/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jdXJl/aGh0Lm9yZy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxNy8wNS93/YXRlci1iYWNrZ3Jv/dW5kLWltYWdlLmpw/Zw);
+    background-position:left right;
+}
+.fondo{
+    background-color: #5D737E;
+    background-image: url(https://imgs.search.brave.com/c6kU1NB6vbb9DhHPc-9Ewg0N-bwOIqZl42jJfWd-e7o/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jdXJl/aGh0Lm9yZy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxNy8wNS93/YXRlci1iYWNrZ3Jv/dW5kLWltYWdlLmpw/Zw);
+    background-position:left right;
+}
