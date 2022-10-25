@@ -18,8 +18,30 @@
     background-image: url(https://imgs.search.brave.com/c6kU1NB6vbb9DhHPc-9Ewg0N-bwOIqZl42jJfWd-e7o/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jdXJl/aGh0Lm9yZy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxNy8wNS93/YXRlci1iYWNrZ3Jv/dW5kLWltYWdlLmpw/Zw);
     background-position:left right;
 }
-.fondo{
+.fondo-interno{
     background-color: #5D737E;
     background-image: url(https://imgs.search.brave.com/c6kU1NB6vbb9DhHPc-9Ewg0N-bwOIqZl42jJfWd-e7o/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jdXJl/aGh0Lm9yZy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAxNy8wNS93/YXRlci1iYWNrZ3Jv/dW5kLWltYWdlLmpw/Zw);
     background-position:left right;
 }
+
+.ancho {
+    background-color: #5D737E;
+    width: 100px;
+}
+
+.alto {
+    background-color: #7FC6A4;
+    height: 300px;
+    width: 150px;
+}
+
+.tarjeta {
+    border-style: solid;
+    border-color: rgb(150, 150, 150);
+    border-width: 2px;
+    /* border-top: none; */
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
